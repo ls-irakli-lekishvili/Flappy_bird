@@ -9,7 +9,7 @@ import DifficultyScene from "./Scenes/DifficultyScene";
 
 // const widthWithPixelRatio = window.innerWidth * window.devicePixelRatio;
 // const heightWithPixelRatio = window.innerHeight * window.devicePixelRatio;
-const WIDTH = window.innerWidth < 1000? 330: 800;
+const WIDTH = window.innerWidth < 1000? 400: 800;
 const HEIGHT = 600;
 const BIRD_POSITION = {x: WIDTH * .1, y: HEIGHT / 2}
 const SHARED_CONFIG = {

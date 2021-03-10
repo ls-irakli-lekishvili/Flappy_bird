@@ -102,7 +102,7 @@ class PlayScene extends BaseScene {
     createScore() {
         this.score = 0;
         this.scoreText = this.add.text(16, 16, `Score: ${this.score}`, {fontSize: '32px', fill: '#000'});
-        const bestScore = localStorage.getItem('bestScore') || 0;
+        const bestScore = localStorage.getItem(`bestScore_${this.difficulty}`) || 0;
         this.add.text(16, 52, `Best score: ${bestScore}`, {fontSize: '18px', fill: '#000'})
     }
 
@@ -179,11 +179,11 @@ class PlayScene extends BaseScene {
     }
 
     saveBestScore() {
-        const bestScoreText = localStorage.getItem('bestScore');
+        const bestScoreText = localStorage.getItem(`bestScore_${this.difficulty}`);
         const bestScore = bestScoreText && parseInt(bestScoreText);
 
         if (!bestScore || this.score > bestScore) {
-            localStorage.setItem('bestScore', this.score.toString());
+            localStorage.setItem(`bestScore_${this.difficulty}`, this.score.toString());
         }
     }
 
@@ -223,8 +223,8 @@ class PlayScene extends BaseScene {
     }
 
     setLevel() {
-        const difficulty = localStorage.getItem('difficulty');
-        const level = this.difficulties[difficulty];
+        this.difficulty = localStorage.getItem('difficulty');
+        const level = this.difficulties[this.difficulty];
         this.pipeVerticalDistanceRange = level.pipeVerticalDistanceRange;
         this.pipeHorizontalDistanceRange = level.pipeHorizontalDistanceRange;
         this.flapVelocity = level.flapVelocity;
